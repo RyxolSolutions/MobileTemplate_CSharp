@@ -2,4 +2,7 @@
 <resources>
     <string-array name="sections">
     </string-array>
+
+    <item type="id" name="recycler_view" />
+    <item type="id" name="recycler_view_container" />
 </resources>

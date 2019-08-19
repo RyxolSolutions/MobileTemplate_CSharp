@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Android.App;
 using Android.Content;
 using Android.Support.V7.App;
@@ -7,6 +8,7 @@ using Android.Views.Animations;
 using Android.Widget;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 using MobileTemplateCSharp.Droid.Views.Base;
+using MobileTemplateCSharp.Droid.Views.Fragments.Base;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using Fragment = Android.Support.V4.App.Fragment;
 using PopupMessage = System.ValueTuple<string, string, string, string, System.Action, System.Action>;
@@ -41,7 +43,9 @@ namespace MobileTemplateCSharp.Droid.Extensions {
             }
         }
 
-        #endregion Loading Bar
+        #endregion
+
+        #region Loading Bar
 
         public static void ShowLoadingBar<TViewModel>(this BaseView<TViewModel> self) where TViewModel : class, IBaseViewModel {
             if (self.RootLayout != null && self.LoadingBarLayout == null) {
@@ -84,10 +88,16 @@ namespace MobileTemplateCSharp.Droid.Extensions {
             }
         }
 
-        #region 
+        public static void ShowLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel {
+            Type type = self.Activity.GetType();
+            type.InvokeMember("ShowLoadingBar", BindingFlags.InvokeMethod, null, self.Activity, new object[] { });
+        }
 
+        public static void HideLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel {
+            Type type = self.Activity.GetType();
+            type.InvokeMember("HideLoadingBar", BindingFlags.InvokeMethod, null, self.Activity, new object[] { });
+        }
 
         #endregion
-
     }
 }

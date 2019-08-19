@@ -4,12 +4,23 @@ using System.Threading.Tasks;
 using MobileTemplateCSharp.Core.Localization;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 
 namespace MobileTemplateCSharp.Core.ViewModels {
     public class HomeViewModel : BaseViewModel {
-        public HomeViewModel() {
+        public HomeViewModel(
+            IMvxNavigationService mvxNavigationService
+        ) {
+            this.mvxNavigationService = mvxNavigationService;
 
-            RoundButtonClickCommand = new MvxAsyncCommand(RoundButtonClick, RoundButtonClick_CanExecute);
+            RoundButtonClickCommand = new MvxAsyncCommand(RoundButtonClick);
+            RoundButtonText = AppResources.Click;
+        }
+        #region Services
+        private readonly IMvxNavigationService mvxNavigationService;
+        #endregion
+        public override void ViewAppearing() {
+            base.ViewAppearing();
             RoundButtonText = AppResources.Click;
         }
 
@@ -18,16 +29,16 @@ namespace MobileTemplateCSharp.Core.ViewModels {
 
         private async Task RoundButtonClick() {
             ShowLoadingBarCommand?.Execute();
-            await Task.Run(() => {
-                Thread.Sleep(3000);
-                RoundButtonText = AppResources.Clicked;
-            });
+            await Task.Run(RoundButtonAsync);
             HideLoadingBarCommand?.Execute();
         }
 
-        private bool RoundButtonClick_CanExecute() {
-            return RoundButtonText == AppResources.Click;
+        private async Task RoundButtonAsync() {
+            Thread.Sleep(3000);
+            RoundButtonText = AppResources.Clicked;
+            await mvxNavigationService.Navigate<ListViewModel>();
         }
+
         #endregion
 
         #region Properties

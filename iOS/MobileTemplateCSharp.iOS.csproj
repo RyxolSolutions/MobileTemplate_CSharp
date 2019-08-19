@@ -122,6 +122,11 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Workarounds\LinkerPleaseIclude.cs" />
+    <Compile Include="Extensions\UITextField_SetBottomBorderExtension.cs" />
+    <Compile Include="Extensions\UIViewContoller_AddFragmentViewExtension.cs" />
+    <Compile Include="Views\Base\BaseView.cs" />
+    <Compile Include="Views\Base\BaseListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -142,8 +147,11 @@
     <Folder Include="Managers\" />
     <Folder Include="Resources\" />
     <Folder Include="Services\" />
-    <Folder Include="View\" />
+    <Folder Include="Views\" />
     <Folder Include="Workarounds\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Fragments\" />
+    <Folder Include="Views\ViewCells\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

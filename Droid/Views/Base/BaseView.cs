@@ -20,6 +20,8 @@ using MobileTemplateCSharp.Droid.Extensions;
 using System.Reflection;
 using System.Linq;
 using MobileTemplateCSharp.Droid.Attributes;
+using Android.Graphics;
+using Android.Content;
 
 namespace MobileTemplateCSharp.Droid.Views.Base {
     public abstract class BaseView<TViewModel> : MvxAppCompatActivity<TViewModel> where TViewModel : class, IBaseViewModel {
@@ -27,36 +29,31 @@ namespace MobileTemplateCSharp.Droid.Views.Base {
         #region View
         protected override void OnCreate(Bundle bundle) {
             base.OnCreate(bundle);
+            RootLayout = (ViewGroup)Window.DecorView.RootView;
         }
 
         protected override void OnStart() {
-            RootLayout = (ViewGroup)Window.DecorView.RootView;
-
+            base.OnStart();
             InitToolbar();
             InitLoadingBar();
             InitPopup();
-
-            base.OnStart();
         }
 
         /// <summary>
         /// Method initialize toolbar. 
         /// It works on Resource.Id.toolbar that is placed in container
         /// </summary>
-        private void InitToolbar() {
-
+        /// <exception cref="!:AttributeException"></exception>
+        private void InitToolbar()
+        {
             var attrs = from attr in this.GetType().GetCustomAttributes() where attr is ToolbarAttribute select attr;
-            if (attrs != null && attrs.Any()) {
+            if (attrs != null && attrs.Any())
+            {
                 ToolbarAttribute toolbarAttribute = (ToolbarAttribute)attrs.First();
                 Toolbar = FindViewById<Toolbar>(toolbarAttribute.ToolbarResource);
-                if (Toolbar == null) {
-                    Toolbar = new Toolbar(this) {
-                        
-                    };
-                    Toolbar.SetBackgroundColor(Resources.GetColor(Resource.Color.primary));
-                    Toolbar.SetTitleTextColor(ContextCompat.GetColor(this, Resource.Color.window_background));
-                    RootLayout.AddView(Toolbar, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent));
-                }
+
+                if (Toolbar == null)
+                    throw new AttributeException(toolbarAttribute, "Toolbar with specified id is not found.");
 
                 SetSupportActionBar(Toolbar);
                 SupportActionBar.Title = ViewModel.Title;

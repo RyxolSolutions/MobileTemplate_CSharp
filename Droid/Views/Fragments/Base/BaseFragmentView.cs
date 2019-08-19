@@ -12,6 +12,7 @@ using MvvmCross.ViewModels;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 using PopupMessage = System.ValueTuple<string, string, string, string, System.Action, System.Action>;
 using MobileTemplateCSharp.Droid.Extensions;
+using MobileTemplateCSharp.Droid.Views.Base;
 
 namespace MobileTemplateCSharp.Droid.Views.Fragments.Base {
     /// <summary>
@@ -33,6 +34,8 @@ namespace MobileTemplateCSharp.Droid.Views.Fragments.Base {
             this.LoadViewModelFrom(request);
 
             ViewModel.ShowPopupCommand = new MvxCommand<PopupMessage>(this.ShowPopup);
+            ViewModel.HideLoadingBarCommand = new MvxCommand(this.HideLoadingBar);
+            ViewModel.ShowLoadingBarCommand = new MvxCommand(this.ShowLoadingBar);
         }
 
         public override void OnCreate(Bundle savedInstanceState) {

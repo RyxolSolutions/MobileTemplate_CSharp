@@ -224,6 +224,8 @@
     <Compile Include="Views\SplashScreenView.cs" />
     <Compile Include="Extensions\BaseExtensions.cs" />
     <Compile Include="Attributes\ToolbarAttibuted.cs" />
+    <Compile Include="Views\ListView.cs" />
+    <Compile Include="Views\Fragments\EmptyListFragmentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -239,7 +241,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_save.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_save.png" />
     <AndroidResource Include="Resources\layout\toolbar.axml" />
-    <AndroidResource Include="Resources\menu\top_menus.xml" />
+    <AndroidResource Include="Resources\menu\list_menu.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
@@ -263,6 +265,18 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\background_splash.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ListView.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\cell_emptylist.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EmptyListFragmentView.axml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

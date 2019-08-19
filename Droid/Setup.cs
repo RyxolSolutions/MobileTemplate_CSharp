@@ -5,6 +5,9 @@ using MvvmCross.Platforms.Android.Core;
 using MvvmCross.ViewModels;
 
 using MobileTemplateCSharp.Core;
+using System.Collections.Generic;
+using System.Reflection;
+using MvvmCross.Droid.Support.V7.RecyclerView;
 
 namespace MobileTemplateCSharp.Droid {
     public class Setup : MvxAndroidSetup<App> {
@@ -26,7 +29,11 @@ namespace MobileTemplateCSharp.Droid {
 
         protected override void InitializePlatformServices() {
             base.InitializePlatformServices();
-
         }
+
+        public override IEnumerable<Assembly> GetViewAssemblies() =>
+            new List<Assembly>(base.GetViewAssemblies()) {
+                typeof(MvxRecyclerView).Assembly
+            };
     }
 }
