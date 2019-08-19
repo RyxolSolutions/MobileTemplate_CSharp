@@ -9,6 +9,7 @@ using Android.Widget;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 using MobileTemplateCSharp.Droid.Views.Base;
 using MobileTemplateCSharp.Droid.Views.Fragments.Base;
+using MvvmCross.Droid.Support.V7.AppCompat;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using Fragment = Android.Support.V4.App.Fragment;
 using PopupMessage = System.ValueTuple<string, string, string, string, System.Action, System.Action>;
@@ -45,7 +46,7 @@ namespace MobileTemplateCSharp.Droid.Extensions {
 
         #endregion
 
-        #region Loading Bar
+        #region Loading Bar for Activity
 
         public static void ShowLoadingBar<TViewModel>(this BaseView<TViewModel> self) where TViewModel : class, IBaseViewModel {
             if (self.RootLayout != null && self.LoadingBarLayout == null) {
@@ -87,16 +88,23 @@ namespace MobileTemplateCSharp.Droid.Extensions {
                 });
             }
         }
+        #endregion
+    }
 
-        public static void ShowLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel {
-            Type type = self.Activity.GetType();
-            type.InvokeMember("ShowLoadingBar", BindingFlags.InvokeMethod, null, self.Activity, new object[] { });
-        }
 
-        public static void HideLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel {
-            Type type = self.Activity.GetType();
-            type.InvokeMember("HideLoadingBar", BindingFlags.InvokeMethod, null, self.Activity, new object[] { });
-        }
+    /// Extensions are splited for convinience of work with Reflection
+    public static class BaseFragmentExtensions {
+        #region Loading Bar for Fragment
+
+        public static void ShowLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel =>
+            typeof(BaseExtensions).GetMethod("ShowLoadingBar", BindingFlags.Public | BindingFlags.Static)
+                .MakeGenericMethod((self.Activity as MvxAppCompatActivity).ViewModel.GetType())
+                .Invoke(null, new[] { self.Activity });
+
+        public static void HideLoadingBar<TViewModel>(this BaseFragmentView<TViewModel> self) where TViewModel : class, IBaseViewModel =>
+            typeof(BaseExtensions).GetMethod("HideLoadingBar", BindingFlags.Public | BindingFlags.Static)
+                .MakeGenericMethod((self.Activity as MvxAppCompatActivity).ViewModel.GetType())
+                .Invoke(null, new[] { self.Activity });
 
         #endregion
     }

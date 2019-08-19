@@ -5,32 +5,54 @@ using System.Threading.Tasks;
 using MobileTemplateCSharp.Core.Models.Cells;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 
-namespace MobileTemplateCSharp.Core.ViewModels
-{
+namespace MobileTemplateCSharp.Core.ViewModels {
     public class ListViewModel : BaseListViewModel {
 
-        public ListViewModel() {
+        public ListViewModel(
+            IMvxNavigationService mvxNavigationService
+        ) {
+            this.mvxNavigationService = mvxNavigationService;
         }
 
-        public override void ViewCreated() {
-            base.ViewCreated();
-        }
-
-        public override void ViewAppearing() {
-            base.ViewAppearing();
-        }
+        #region Services
+        private readonly IMvxNavigationService mvxNavigationService;
+        #endregion
 
         public override void ViewAppeared() {
             base.ViewAppeared();
-            Items = new List<TitleModel>() {
-                new TitleModel() { Title = "1: i am  empty" },
-                new TitleModel() { Title = "2: i am  empty" },
-            };
+            _ = LoadItems();
+        }
+
+        protected virtual async Task LoadItems() {
+            await Task.Run(() => {
+                Items = new List<TitleModel>() {
+                    new TitleModel() { Title = "1: i am  empty" },
+                    new TitleModel() { Title = "2: i am  empty" },
+                    new TitleModel() { Title = "3: i am  empty" },
+                    new TitleModel() { Title = "4: i am  empty" },
+                    new TitleModel() { Title = "5: i am  empty" }
+                };
+            });
             UpdateListUI();
         }
 
+        #region Commnads
+
+        private IMvxAsyncCommand _nextPageCommand;
+        public IMvxAsyncCommand NextPageCommand => _nextPageCommand =
+            _nextPageCommand ?? new MvxAsyncCommand(NextPage);
+
+        private async Task NextPage() {
+            await mvxNavigationService.Navigate<ContainingFragmentsViewModel>();
+            await mvxNavigationService.Close(this);
+        }
+
+        #endregion
+
         #region List
+
         private List<TitleModel> _items;
         public List<TitleModel> Items {
             get => _items;
@@ -61,7 +83,9 @@ namespace MobileTemplateCSharp.Core.ViewModels
             RefreshListCommand?.Execute();
             UpdateListUI();
         }
+
         #endregion
+
         public override string Title => "Empty List";
     }
 }

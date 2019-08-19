@@ -210,6 +210,7 @@
       <HintPath>..\packages\sqlite-net-pcl.1.5.231\lib\netstandard1.1\SQLite-net.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android.Export" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainApplication.cs" />
@@ -222,10 +223,15 @@
     <Compile Include="Setup.cs" />
     <Compile Include="Views\HomeView.cs" />
     <Compile Include="Views\SplashScreenView.cs" />
-    <Compile Include="Extensions\BaseExtensions.cs" />
     <Compile Include="Attributes\ToolbarAttibuted.cs" />
     <Compile Include="Views\ListView.cs" />
     <Compile Include="Views\Fragments\EmptyListFragmentView.cs" />
+    <Compile Include="Views\Fragments\ListFragmentView.cs" />
+    <Compile Include="Extensions\Base\BaseExtensions.cs" />
+    <Compile Include="Extensions\Base\BaseListExtensions.cs" />
+    <Compile Include="Views\Base\IBaseListView.cs" />
+    <Compile Include="Views\ContainingFragmentsView.cs" />
+    <Compile Include="Extensions\Base\IBaseListView_FindRecyclerView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
@@ -280,6 +286,14 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\ListFragmentView.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ContainingFragmentsView.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
@@ -291,6 +305,7 @@
     <Folder Include="Views\Fragments\Base\" />
     <Folder Include="Resources\layout\Pages\" />
     <Folder Include="Attributes\" />
+    <Folder Include="Extensions\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MobileTemplateCSharp.Core\MobileTemplateCSharp.Core.csproj">

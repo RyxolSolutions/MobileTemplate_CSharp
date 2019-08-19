@@ -43,7 +43,10 @@ namespace MobileTemplateCSharp.Droid.Views.Fragments.Base {
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            RootLayout = container ?? (ViewGroup)Activity.Window.DecorView.RootView;
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
+
+        protected ViewGroup RootLayout { get; set; }
     }
 }
