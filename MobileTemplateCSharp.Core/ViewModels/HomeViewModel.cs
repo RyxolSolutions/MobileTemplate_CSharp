@@ -16,9 +16,11 @@ namespace MobileTemplateCSharp.Core.ViewModels {
             RoundButtonClickCommand = new MvxAsyncCommand(RoundButtonClick);
             RoundButtonText = AppResources.Click;
         }
+
         #region Services
         private readonly IMvxNavigationService mvxNavigationService;
         #endregion
+
         public override void ViewAppearing() {
             base.ViewAppearing();
             RoundButtonText = AppResources.Click;
@@ -43,7 +45,7 @@ namespace MobileTemplateCSharp.Core.ViewModels {
 
         #region Properties
 
-        public string _roundButtonText;
+        private string _roundButtonText;
         public string RoundButtonText {
             get => _roundButtonText;
             set => SetProperty(ref _roundButtonText, value);

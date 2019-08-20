@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListView">
+            <connections>
+                <outlet property="DownButton" destination="WzE-iD-ljO" id="rhg-7e-Tq7"/>
+                <outlet property="TableView" destination="4OJ-LT-wV7" id="3aG-BV-akc"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4OJ-LT-wV7">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="738"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzE-iD-ljO">
+                    <rect key="frame" x="16" y="754" width="382" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4OJ-LT-wV7" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="2QR-Bf-ZH6"/>
+                <constraint firstAttribute="bottom" secondItem="WzE-iD-ljO" secondAttribute="bottom" constant="24" id="5kg-pX-Fpx"/>
+                <constraint firstItem="WzE-iD-ljO" firstAttribute="top" secondItem="4OJ-LT-wV7" secondAttribute="bottom" constant="16" id="82Z-sy-610"/>
+                <constraint firstAttribute="trailing" secondItem="4OJ-LT-wV7" secondAttribute="trailing" id="fwu-BS-fRg"/>
+                <constraint firstItem="4OJ-LT-wV7" firstAttribute="top" secondItem="2" secondAttribute="top" id="pnZ-iF-Htt"/>
+                <constraint firstAttribute="trailing" secondItem="WzE-iD-ljO" secondAttribute="trailing" constant="16" id="uzO-Qe-aBo"/>
+                <constraint firstItem="WzE-iD-ljO" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="16" id="wES-5q-9HA"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="33.333333333333336" y="53.571428571428569"/>
+        </view>
+    </objects>
+</document>

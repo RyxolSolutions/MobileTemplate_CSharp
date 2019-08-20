@@ -7,6 +7,8 @@ using UIKit;
 using MvvmCross.Commands;
 
 using MobileTemplateCSharp.Core.ViewModels.Base;
+using System.Linq;
+using System.Reflection;
 
 namespace MobileTemplateCSharp.iOS.Views.Base {
     public abstract class BaseListView<TViewModel> : BaseView<TViewModel> where TViewModel : class, IBaseListViewModel {
@@ -28,9 +30,23 @@ namespace MobileTemplateCSharp.iOS.Views.Base {
 
         #region List
 
-        protected abstract UITableView GetTableView { get; }
+        protected UITableView _tableView;
+        protected virtual UITableView GetTableView {
+            get {
+                _tableView = _tableView ?? getTableView_Reflection();
+                return _tableView;
+            }
+        }
 
-        //private UIImageView EmptyListImageView;
+        protected virtual UITableView getTableView_Reflection() =>
+            this?.GetType()
+                ?.GetProperties(BindingFlags.NonPublic | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
+                ?.Where(prop => Attribute.IsDefined(prop, typeof(OutletAttribute)))
+                ?.Where(prop => prop.PropertyType == typeof(UITableView))
+                ?.FirstOrDefault()
+                ?.GetValue(this)
+                as UITableView;
+
         private UILabel EmpltyListLabel;
 
         private void HideEmplyList() {

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListFragmentView">
+            <connections>
+                <outlet property="DownButton" destination="2p1-bo-5u9" id="mgB-ZB-b6f"/>
+                <outlet property="TableView" destination="TVZ-BA-bRp" id="8Va-g3-BkH"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-bo-5u9">
+                    <rect key="frame" x="16" y="754" width="382" height="30"/>
+                    <state key="normal" title="Button"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TVZ-BA-bRp">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TVZ-BA-bRp" secondAttribute="trailing" id="BiM-tA-oFu"/>
+                <constraint firstAttribute="bottom" secondItem="2p1-bo-5u9" secondAttribute="bottom" constant="24" id="IuY-kh-bmL"/>
+                <constraint firstItem="2p1-bo-5u9" firstAttribute="top" secondItem="TVZ-BA-bRp" secondAttribute="bottom" constant="8" id="YN8-fT-yda"/>
+                <constraint firstItem="TVZ-BA-bRp" firstAttribute="top" secondItem="2" secondAttribute="top" id="aCe-7c-iP3"/>
+                <constraint firstItem="TVZ-BA-bRp" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="cne-mF-cVv"/>
+                <constraint firstItem="2p1-bo-5u9" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="16" id="gCF-aY-Y20"/>
+                <constraint firstAttribute="trailing" secondItem="2p1-bo-5u9" secondAttribute="trailing" constant="16" id="oPO-fT-2mh"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+        </view>
+    </objects>
+</document>
