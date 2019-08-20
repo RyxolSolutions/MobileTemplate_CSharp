@@ -22,6 +22,7 @@ namespace MobileTemplateCSharp.iOS.Views.Fragments {
             set.Bind(Source).To(vm => vm.Items);
             set.Bind(Source).For(v => v.SelectionChangedCommand).To(vm => vm.RemoveItemCommand);
             set.Bind(DownButton).To(vm => vm.ReloadListCommand);
+            set.Bind(DownButton).For("Title").To(vm => vm.ButtonTitle);
             set.Apply();
         }
 

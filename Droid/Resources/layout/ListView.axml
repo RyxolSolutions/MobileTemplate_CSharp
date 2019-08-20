@@ -24,6 +24,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
         android:text="Next Page"
-        app:MvxBind="Click NextPageCommand"
+        app:MvxBind="Click NextPageCommand; Text ButtonTitle"
     />
 </LinearLayout>

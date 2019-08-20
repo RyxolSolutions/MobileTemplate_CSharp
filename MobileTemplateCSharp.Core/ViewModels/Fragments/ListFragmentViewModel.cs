@@ -26,5 +26,6 @@ namespace MobileTemplateCSharp.Core.ViewModels.Fragments {
         }
 
         public override string Title => "List Fragment";
+        public override string ButtonTitle => "Reload List";
     }
 }

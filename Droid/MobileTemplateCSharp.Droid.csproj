@@ -303,7 +303,6 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Fragments\" />
     <Folder Include="Views\Fragments\Base\" />
-    <Folder Include="Resources\layout\Pages\" />
     <Folder Include="Attributes\" />
     <Folder Include="Extensions\Base\" />
   </ItemGroup>

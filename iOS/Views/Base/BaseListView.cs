@@ -39,11 +39,11 @@ namespace MobileTemplateCSharp.iOS.Views.Base {
         }
 
         protected virtual UITableView getTableView_Reflection() =>
-            this?.GetType()
-                ?.GetProperties(BindingFlags.NonPublic | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
-                ?.Where(prop => Attribute.IsDefined(prop, typeof(OutletAttribute)))
-                ?.Where(prop => prop.PropertyType == typeof(UITableView))
-                ?.FirstOrDefault()
+            this.GetType()
+                .GetProperties(BindingFlags.NonPublic | BindingFlags.GetProperty | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
+                .Where(prop => Attribute.IsDefined(prop, typeof(OutletAttribute)))
+                .Where(prop => prop.PropertyType == typeof(UITableView))
+                .FirstOrDefault()
                 ?.GetValue(this)
                 as UITableView;
 
@@ -55,6 +55,7 @@ namespace MobileTemplateCSharp.iOS.Views.Base {
                 if (EmpltyListLabel != null) {
                     EmpltyListLabel.RemoveFromSuperview();
                     EmpltyListLabel.Dispose();
+                    EmpltyListLabel = null;
                 }
             });
         }

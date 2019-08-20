@@ -12,6 +12,7 @@ using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MobileTemplateCSharp.Core.ViewModels.Base;
 
 using PopupMessage = System.ValueTuple<string, string, string, string, System.Action, System.Action>;
+using MobileTemplateCSharp.iOS.Managers;
 
 namespace MobileTemplateCSharp.iOS.Views.Base {
     public abstract class BaseView<TViewModel> : MvxViewController<TViewModel> where TViewModel : class, IBaseViewModel {
@@ -85,7 +86,7 @@ namespace MobileTemplateCSharp.iOS.Views.Base {
                     Center = View.Center
                 };
                 LoadingBackgroundView.Frame = new CGRect(new CGPoint(View.Frame.Location), new CGSize(View.Frame.Size));
-                LoadingBackgroundView.BackgroundColor = UIColor.Orange;
+                LoadingBackgroundView.BackgroundColor = ColorManager.progressbar_background;
                 LoadingBackgroundView.Alpha = 0;
 
 

@@ -86,6 +86,13 @@ namespace MobileTemplateCSharp.Core.ViewModels {
 
         #endregion
 
+        #region Properties
+
+        public virtual string ButtonTitle => "Next Page";
+
         public override string Title => "Empty List";
+
+        #endregion
+
     }
 }
