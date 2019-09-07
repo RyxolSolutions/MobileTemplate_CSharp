@@ -30,18 +30,19 @@ namespace MobileTemplateCSharp.Droid.Extensions {
 
         public static void ShowPopup(Context context, Activity activity, PopupMessage parameters) {
             var (title, message, positiveButtonText, negativeButtonText, positiveClick, negativeClick) = parameters;
-            using (AlertDialog.Builder builder = new AlertDialog.Builder(context)) {
-                builder.SetTitle(title);
-                builder.SetMessage(message);
-                if (!string.IsNullOrEmpty(positiveButtonText))
-                    builder.SetPositiveButton(positiveButtonText, (senderAlert, args) => positiveClick());
-                if (!string.IsNullOrEmpty(negativeButtonText))
-                    builder.SetNegativeButton(negativeButtonText, (senderAlert, args) => negativeClick());
-                activity.RunOnUiThread(() => {
-                    Dialog dialog = builder.Create();
-                    dialog.Show();
-                });
-            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.SetTitle(title);
+            builder.SetMessage(message);
+            if (!string.IsNullOrEmpty(positiveButtonText))
+                builder.SetPositiveButton(positiveButtonText, (senderAlert, args) => positiveClick());
+            if (!string.IsNullOrEmpty(negativeButtonText))
+                builder.SetNegativeButton(negativeButtonText, (senderAlert, args) => negativeClick());
+            activity.RunOnUiThread(() => {
+                Dialog dialog = builder.Create();
+                dialog.Show();
+                builder.Dispose();
+            });
+            
         }
 
         #endregion

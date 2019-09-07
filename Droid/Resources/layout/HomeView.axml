@@ -17,5 +17,5 @@
         android:text="Click"
 		android:background="@drawable/round_button"
         app:MvxBind="Text RoundButtonText; Click RoundButtonClickCommand"
-        />
+	/>
 </RelativeLayout> 
